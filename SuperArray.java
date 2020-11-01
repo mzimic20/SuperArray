@@ -4,8 +4,12 @@ public class SuperArray {
   private int size;
 
   public SuperArray() {
-    SuperArray arr = new SuperArray[10];
-    size = arr.length;
+    size = 10;
+    data = new String[10];
+  }
+
+  public int size() {
+    return size;
   }
 
 }
