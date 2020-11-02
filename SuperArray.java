@@ -17,7 +17,14 @@ public class SuperArray {
     for(int i = 0; i < data.length && a == -1; i++) {
       if (data[i] == null) a = i;
     }
-    if (a == -1) return false;
+    if (a == -1) {
+      this.resize();
+      for(int i = 0; i < data.length; i++) {
+        if (data[i] == null) a = i;
+      }
+      data[a] = element;
+      return true;
+    }
     else {
       data[a] = element;
       return true;
@@ -32,6 +39,15 @@ public class SuperArray {
     String ans = data[index];
     data[index] = element;
     return ans;
+  }
+
+  private void resize() {
+    size += 10;
+    String[] temp = new String[size];
+    for(int i = 0; i < data.length; i++) {
+      temp[i] = data[i];
+    }
+    data = temp;
   }
 
 }

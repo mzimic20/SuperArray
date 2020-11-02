@@ -2,7 +2,7 @@ public class Tester {
 
   public static void main(String[]args) {
     SuperArray words = new SuperArray();
-    System.out.println( "size == 10?: " + (words.size() == 10) );
+    System.out.println( "words.size() -> 10: " + words.size() );
     words.add("prljavo kazaliste");
     words.add("thompson");
     words.add("bijelo dugme");
@@ -14,6 +14,7 @@ public class Tester {
     for(int i = 0; i < words.size(); i++) {
       System.out.println( words.get(i) );
     }
+    
   }
 
 }
