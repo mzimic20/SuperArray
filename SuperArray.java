@@ -28,4 +28,10 @@ public class SuperArray {
     return data[index];
   }
 
+  public String set(int index, String element) {
+    String ans = data[index];
+    data[index] = element;
+    return ans;
+  }
+
 }
