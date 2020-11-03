@@ -50,4 +50,32 @@ public class SuperArray {
     data = temp;
   }
 
+  public boolean isEmpty() {
+    boolean empty = true;
+    for(int i = 0; i < data.length && empty; i++) {
+      if (data[i] != null) empty = false;
+    }
+    return empty;
+  }
+
+  public void clear() {
+    size = 0;
+    data = new String[size];
+  }
+
+  public String toString() {
+    String ans = "[";
+    for(int i = 0; i < data.length - 1; i++) {
+      ans += data[i] + ", ";
+    }
+    return ans += data[data.length - 1] + "]";
+  }
+
+  public boolean contains(String s) {
+    for(int i = 0; i < data.length; i++) {
+      if (data[i] == s) return true;
+    }
+    return false;
+  }
+
 }

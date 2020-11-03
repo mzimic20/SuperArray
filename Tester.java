@@ -14,7 +14,12 @@ public class Tester {
     for(int i = 0; i < words.size(); i++) {
       System.out.println( words.get(i) );
     }
-    
+    SuperArray worse = new SuperArray();
+    System.out.println( "words.isEmpty() -> false: " + words.isEmpty() );
+    System.out.println( "worse.isEmpty() -> true: " + worse.isEmpty() );
+    System.out.println( "words.toString(): " + words.toString() );
+    System.out.println( "words.contains(pencil) -> false: " + words.contains("pencil") );
+    System.out.println( "words.contains(tutti frutti) -> true: " + words.contains("tutti frutti") );
   }
 
 }
