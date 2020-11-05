@@ -15,14 +15,15 @@ public class Tester {
       System.out.println( words.get(i) );
     }
     SuperArray worse = new SuperArray();
-    System.out.println( "words.isEmpty() -> false: " + words.isEmpty() );
-    System.out.println( "worse.isEmpty() -> true: " + worse.isEmpty() );
-    System.out.println( "words.toString(): " + words.toString() );
-    System.out.println( "words.contains(pencil) -> false: " + words.contains("pencil") );
-    System.out.println( "words.contains(tutti frutti) -> true: " + words.contains("tutti frutti") );
     worse.add("there for tomorrow");
     worse.add("search the city");
     worse.add("march to the grave");
+    System.out.println( "words.isEmpty() -> false: " + words.isEmpty() );
+    System.out.println( "worse.isEmpty() -> true: " + worse.isEmpty() );
+    System.out.println( "words.toString(): " + words.toString() );
+    System.out.println( "worse.toString(): " + worse.toString() );
+    System.out.println( "words.contains(pencil) -> false: " + words.contains("pencil") );
+    System.out.println( "words.contains(tutti frutti) -> true: " + words.contains("tutti frutti") );
     for(int i = 0; i < worse.size(); i++) {
       System.out.println( worse.get(i) );
     }

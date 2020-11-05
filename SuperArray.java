@@ -65,10 +65,14 @@ public class SuperArray {
 
   public String toString() {
     String ans = "[";
-    for(int i = 0; i < data.length - 1; i++) {
-      ans += data[i] + ", ";
+    for(int i = 0; i < data.length; i++) {
+      if (data[i] != null) {
+        ans += data[i] + ", ";
+      }
     }
-    return ans += data[data.length - 1] + "]";
+    ans = ans.substring(0, ans.length() - 2);
+    if (data[data.length - 1] == null) return ans += "]";
+    else return ans += data[data.length - 1] + "]";
   }
 
   public boolean contains(String s) {
