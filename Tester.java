@@ -53,6 +53,7 @@ public class Tester {
     System.out.println( "words.indexOf(mladen grdovic) -> -1: " + words.indexOf("mladen grdovic") );
     System.out.println( "worse.indexOf(search the city) -> 1: " + worse.indexOf("search the city") );
     System.out.println( "words.indexOf(yellowcard) -> -1: " + words.indexOf("yellowcard") );
+    System.out.println();
   }
 
 }
