@@ -65,7 +65,7 @@ public class SuperArray {
 
   public String toString() {
     String ans = "[";
-    for(int i = 0; i < data.length; i++) {
+    for(int i = 0; i < data.length - 1; i++) {
       if (data[i] != null) {
         ans += data[i] + ", ";
       }
