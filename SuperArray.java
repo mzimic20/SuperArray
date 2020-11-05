@@ -42,7 +42,7 @@ public class SuperArray {
   }
 
   private void resize() {
-    size += 10;
+    size = size * 2;
     String[] temp = new String[size];
     for(int i = 0; i < data.length; i++) {
       temp[i] = data[i];
@@ -76,6 +76,24 @@ public class SuperArray {
       if (data[i] == s) return true;
     }
     return false;
+  }
+
+  public SuperArray(int initialCapacity) {
+    size = initialCapacity;
+    data = new String[size];
+  }
+
+  public void add(int index, String element) {
+    size++;
+    String[] temp = new String[size];
+    for(int i = 0; i < index; i++) {
+      temp[i] = data[i];
+    }
+    temp[index] = element;
+    for(int i = index; i < data.length; i++) {
+      temp[i + 1] = data[i];
+    }
+    data = temp;
   }
 
 }

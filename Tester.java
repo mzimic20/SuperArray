@@ -20,6 +20,22 @@ public class Tester {
     System.out.println( "words.toString(): " + words.toString() );
     System.out.println( "words.contains(pencil) -> false: " + words.contains("pencil") );
     System.out.println( "words.contains(tutti frutti) -> true: " + words.contains("tutti frutti") );
+    worse.add("there for tomorrow");
+    worse.add("search the city");
+    worse.add("march to the grave");
+    for(int i = 0; i < worse.size(); i++) {
+      System.out.println( worse.get(i) );
+    }
+    System.out.println();
+    words.add(5, "slavonske lole");
+    worse.add(6, "freeze the atlantic");
+    for(int i = 0; i < words.size(); i++) {
+      System.out.println( words.get(i) );
+    }
+    System.out.println();
+    for(int i = 0; i < worse.size(); i++) {
+      System.out.println( worse.get(i) );
+    }
   }
 
 }
