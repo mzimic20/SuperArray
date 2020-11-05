@@ -48,6 +48,11 @@ public class Tester {
     for(int i = 0; i < worse.size(); i++) {
       System.out.println( worse.get(i) );
     }
+    System.out.println();
+    System.out.println( "words.indexOf(tutti frutti) -> 7: " + words.indexOf("tutti frutti") );
+    System.out.println( "words.indexOf(mladen grdovic) -> -1: " + words.indexOf("mladen grdovic") );
+    System.out.println( "worse.indexOf(search the city) -> 1: " + worse.indexOf("search the city") );
+    System.out.println( "words.indexOf(yellowcard) -> -1: " + words.indexOf("yellowcard") );
   }
 
 }
