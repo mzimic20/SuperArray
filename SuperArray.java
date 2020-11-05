@@ -72,7 +72,7 @@ public class SuperArray {
     }
     ans = ans.substring(0, ans.length() - 2);
     if (data[data.length - 1] == null) return ans += "]";
-    else return ans += data[data.length - 1] + "]";
+    else return ans += ", " + data[data.length - 1] + "]";
   }
 
   public boolean contains(String s) {
