@@ -21,6 +21,33 @@ public class Demo{
     return ans;
   }
 
+  public static SuperArray zip(SuperArray a, SuperArray b) {
+    SuperArray zipper = new SuperArray();
+    String[] arrA = a.toArray();
+    String[] arrB = b.toArray();
+    int size = 0;
+    if (arrA.length <= arrB.length) size = arrA.length;
+    else size = arrB.length;
+    for(int i = 0; i < size; i++) {
+      zipper.add(arrA[i]);
+      zipper.add(arrB[i]);
+    }
+    if (arrA.length == arrB.length) return zipper;
+    else {
+      if (size == arrA.length) {
+        for(int i = size; i < arrB.length; i++) {
+          zipper.add(arrB[i]);
+        }
+      }
+      else {
+        for(int i = size; i < arrA.length; i++) {
+          zipper.add(arrA[i]);
+        }
+      }
+    }
+    return zipper;
+  }
+
   public static void main(String[]args) {
     SuperArray words = new SuperArray();
     words.add("kani");
@@ -68,6 +95,9 @@ public class Demo{
     System.out.println("\nDEMO equals()");
     System.out.println( words.equals(phrases) );
     System.out.println( A.equals(B) );
+    System.out.println("\nDEMO zip");
+    System.out.println( zip(words, phrases) );
+    System.out.println( zip(A, B) );
   }
 
 }
