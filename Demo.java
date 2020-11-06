@@ -43,13 +43,31 @@ public class Demo{
     phrases.add("una");
     phrases.add("kani");
     phrases.add("ebi");
-    System.out.println("TESTER removeDuplicates");
+    SuperArray A = new SuperArray();
+    A.add("hello");
+    A.add("goodbye");
+    A.add("toro");
+    A.add("una");
+    SuperArray B = new SuperArray(35);
+    B.add("hello");
+    B.add("goodbye");
+    B.add("toro");
+    B.add("una");
+    System.out.println("\nDEMO lastIndexOf");
+    System.out.println( "words.lastIndexOf(una) -> 8: " + words.lastIndexOf("una") );
+    System.out.println( "words.lastIndexOf(kani) -> 6: " + words.lastIndexOf("kani") );
+    System.out.println( "phrases.lastIndexOf(goodbye) -> 3: " + phrases.lastIndexOf("goodbye") );
+    System.out.println( "phrases.lastIndexOf(toro) -> 4: " + phrases.lastIndexOf("toro") );
+    System.out.println("\nDEMO removeDuplicates");
     System.out.println(words);
     removeDuplicates(words);
     System.out.println(words);
-    System.out.println("\nTESTER findOverlap");
+    System.out.println("\nDEMO findOverlap");
     System.out.println(words + "\t" + phrases);
     System.out.println( findOverlap(words, phrases) );
+    System.out.println("\nDEMO equals()");
+    System.out.println( words.equals(phrases) );
+    System.out.println( A.equals(B) );
   }
 
 }

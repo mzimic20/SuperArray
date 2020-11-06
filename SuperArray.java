@@ -126,10 +126,16 @@ public class SuperArray {
   }
 
   public int lastIndexOf(String s) {
-    for(int i = data.length - 1; i <= 0; i--) {
+    for(int i = data.length - 1; i >= 0; i--) {
       if (data[i] == s) return i;
     }
     return -1;
+  }
+
+  public boolean equals(SuperArray other) {
+    String a = this.toString();
+    String b = other.toString();
+    return a.equals(b);
   }
 
 }
