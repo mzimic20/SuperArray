@@ -32,10 +32,16 @@ public class SuperArray {
   }
 
   public String get(int index) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
+    }
     return data[index];
   }
 
   public String set(int index, String element) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
+    }
     String ans = data[index];
     data[index] = element;
     return ans;
@@ -83,11 +89,17 @@ public class SuperArray {
   }
 
   public SuperArray(int initialCapacity) {
+    if (initialCapacity < 0) {
+      throw new IllegalArgumentException("initialCapacity is " + initialCapacity + ", cannot be negative!");
+    }
     size = initialCapacity;
     data = new String[size];
   }
 
   public void add(int index, String element) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
+    }
     size++;
     String[] temp = new String[size];
     for(int i = 0; i < index; i++) {
@@ -101,6 +113,9 @@ public class SuperArray {
   }
 
   public String remove(int index) {
+    if (index < 0 || index >= size()) {
+      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
+    }
     size--;
     String ans = data[index];
     String[] temp = new String[size];
