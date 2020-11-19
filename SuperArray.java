@@ -9,7 +9,11 @@ public class SuperArray {
   }
 
   public int size() {
-    return size;
+    int counter = 0;
+    for(int i = 0; i < data.length; i++) {
+      if (data[i] != null) counter++;
+    }
+    return counter;
   }
 
   public boolean add(String element) {
@@ -97,8 +101,8 @@ public class SuperArray {
   }
 
   public void add(int index, String element) {
-    if (index < 0 || index >= size()) {
-      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
+    if (index < 0 || index >= size) {
+      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size - 1) + "]");
     }
     size++;
     String[] temp = new String[size];
