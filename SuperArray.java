@@ -1,160 +1,136 @@
+import java.util.Arrays;
+
 public class SuperArray {
 
   private String[] data;
   private int size;
 
   public SuperArray() {
-    size = 10;
-    data = new String[size];
+    size = 0;
+    data = new String[10];
+  }
+
+  public SuperArray(int InitialCapacity) {
+    if (InitialCapacity < 0) throw new IllegalArgumentException("Negative initial capacity " + InitialCapacity);
+    size = 0;
+    data = new String[InitialCapacity];
   }
 
   public int size() {
-    int counter = 0;
-    for(int i = 0; i < data.length; i++) {
-      if (data[i] != null) counter++;
-    }
-    return counter;
+    return size;
   }
 
-  public boolean add(String element) {
-    int a = -1;
-    for(int i = 0; i < data.length && a == -1; i++) {
-      if (data[i] == null) a = i;
-    }
-    if (a == -1) {
-      this.resize();
-      for(int i = 0; i < data.length; i++) {
-        if (data[i] == null) a = i;
-      }
-      data[a] = element;
-      return true;
-    }
-    else {
-      data[a] = element;
-      return true;
-    }
+  public boolean add(String element){
+    if(size == data.length) resize();
+    data[size] = element;
+    size = size + 1;
+    return true;
   }
 
-  public String get(int index) {
-    if (index < 0 || index >= size()) {
-      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
-    }
-    return data[index];
+  public String get(int index){
+    if(index < 0 || index >= size()) throw new IndexOutOfBoundsException("Index out of range" + index);
+    else return data[index];
   }
 
-  public String set(int index, String element) {
-    if (index < 0 || index >= size()) {
-      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
-    }
-    String ans = data[index];
+  public String set(int index, String element){
+    if(index < 0 || index >= size()) throw new IndexOutOfBoundsException("Index out of range" + index);
+    String val = data[index];
     data[index] = element;
-    return ans;
+    return val;
   }
 
-  private void resize() {
-    size = size * 2;
-    String[] temp = new String[size];
-    for(int i = 0; i < data.length; i++) {
-      temp[i] = data[i];
+  private void resize(){
+    String[]datatwo = new String[data.length * 2];
+    for(int i = 0; i < data.length; i++){
+      datatwo[i] = data[i];
     }
-    data = temp;
+    data = datatwo;
   }
 
-  public boolean isEmpty() {
-    boolean empty = true;
-    for(int i = 0; i < data.length && empty; i++) {
-      if (data[i] != null) empty = false;
+  public boolean isEmpty(){
+      if (size != 0) return false;
+      else return true;
     }
-    return empty;
+
+  public String toString(){
+    if (size == 0) return "[]";
+    String ret = "[";
+    for(int i = 0; i < size() -1; i++){
+      ret += data[i] + ", ";
+    }
+    return ret + data[size- 1] + "]";
+ }
+
+  public boolean contains(String s){
+    boolean gotStr = false;
+    for(int i = 0; i < size; i++) {
+      if (data[i] == null) return false;
+      if (data[i].equals(s)) gotStr = true;
+    }
+    return gotStr;
   }
 
   public void clear() {
+    String[] datathree = new String[data.length];
+    data = datathree;
     size = 0;
-    data = new String[size];
   }
 
-  public String toString() {
-    String ans = "[";
-    for(int i = 0; i < data.length - 1; i++) {
-      if (data[i] != null) {
-        ans += data[i] + ", ";
-      }
-    }
-    ans = ans.substring(0, ans.length() - 2);
-    if (data[data.length - 1] == null) return ans += "]";
-    else return ans += ", " + data[data.length - 1] + "]";
-  }
-
-  public boolean contains(String s) {
-    for(int i = 0; i < data.length; i++) {
-      if (data[i] == s) return true;
-    }
-    return false;
-  }
-
-  public SuperArray(int initialCapacity) {
-    if (initialCapacity < 0) {
-      throw new IllegalArgumentException("initialCapacity is " + initialCapacity + ", cannot be negative!");
-    }
-    size = initialCapacity;
-    data = new String[size];
-  }
-
-  public void add(int index, String element) {
-    if (index < 0 || index >= size) {
-      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size - 1) + "]");
+  public void add(int index, String element){
+    if (index < 0 || index > size()) throw new IndexOutOfBoundsException("Index out of bounds" + index);
+    if (size >= data.length) resize();
+    for(int i= size -1; i >= index; i--){
+      data[i+1]= data[i];
     }
     size++;
-    String[] temp = new String[size];
-    for(int i = 0; i < index; i++) {
-      temp[i] = data[i];
-    }
-    temp[index] = element;
-    for(int i = index; i < data.length; i++) {
-      temp[i + 1] = data[i];
-    }
-    data = temp;
+    data[index]= element;
   }
 
-  public String remove(int index) {
-    if (index < 0 || index >= size()) {
-      throw new IndexOutOfBoundsException("index is " + index + ", out of bounds [0, " + (size() - 1) + "]");
+  public String remove(int index){
+    if(index < 0 || index >= size()) throw new IndexOutOfBoundsException("Index out of bounds" + index);
+    String removed = data[index];
+    if(size >= data.length) resize();
+    for(int i = index; i < size - 1; i++){
+      data[i] = data[i+1];
     }
     size--;
-    String ans = data[index];
-    String[] temp = new String[size];
-    for(int i = 0; i < index; i++) {
-      temp[i] = data[i];
-    }
-    for(int i = index + 1; i < data.length; i++) {
-      temp[i - 1] = data[i];
-    }
-    data = temp;
-    return ans;
+    data[size] = null;
+    return removed;
   }
 
   public int indexOf(String s) {
-    for(int i = 0; i < data.length; i++) {
-      if (data[i] == s) return i;
+    for(int i = 0; i < size(); i++) {
+      if(s != null && data[i] != null){
+        if(data[i].equals(s)) return i;
+      }
     }
     return -1;
   }
 
   public String[] toArray() {
-    return data;
+    String[] output = new String[size];
+    for(int i = 0; i < size; i++){
+      output[i] = data[i];
+    }
+    return output;
   }
 
-  public int lastIndexOf(String s) {
-    for(int i = data.length - 1; i >= 0; i--) {
-      if (data[i] == s) return i;
+  public int lastIndexOf(String value) {
+    String[] output = new String[size()];
+    for(int i = size() - 1; i >= 0; i--){
+      if(value != null && data[i] != null){
+        if(data[i].equals(value)) return i;
+      }
     }
     return -1;
   }
 
   public boolean equals(SuperArray other) {
-    String a = this.toString();
-    String b = other.toString();
-    return a.equals(b);
+    if (size() != other.size()) return false;
+    for(int i = 0; i < size(); i++){
+      if (!(other.data[i].equals(data[i]))) return false;
+    }
+    return true;
   }
 
 }
